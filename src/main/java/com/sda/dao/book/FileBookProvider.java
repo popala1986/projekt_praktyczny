@@ -1,4 +1,4 @@
-package com.sda.provider;
+package com.sda.dao.book;
 
 import com.sda.model.*;
 import lombok.NoArgsConstructor;
@@ -9,11 +9,10 @@ import java.io.IOException;
 import java.time.Year;
 import java.util.List;
 import java.util.stream.Collectors;
-
 @NoArgsConstructor
-public class FileBookProvider implements BookProvider{
+public class FileBookProvider implements BookProvider {
 
-    private String filePath = "src/main/resources/books";
+    private String filePath = "src/main/java/resources/books";
 
     public FileBookProvider(String filePath) {
         this.filePath = filePath;

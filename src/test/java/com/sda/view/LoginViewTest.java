@@ -9,6 +9,24 @@ import java.io.FileNotFoundException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import com.sda.api.UserLoginData;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import com.sda.api.UserLoginData;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 class LoginViewTest {
 
     private final UserLoginData exampleUserLoginData = new UserLoginData(

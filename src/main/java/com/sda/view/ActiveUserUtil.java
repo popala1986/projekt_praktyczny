@@ -1,4 +1,4 @@
-package com.sda;
+package com.sda.view;
 
 import com.sda.model.User;
 

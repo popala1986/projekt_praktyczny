@@ -1,4 +1,15 @@
-package com.sda.provider;
+package com.sda.dao;
+
+import com.sda.dao.book.BookProvider;
+import com.sda.dao.book.FileBookProvider;
+import com.sda.model.Author;
+import com.sda.model.Book;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.time.Year;
+import java.util.List;
+
 
 import com.sda.dao.book.BookProvider;
 import com.sda.dao.book.FileBookProvider;
@@ -27,8 +38,15 @@ class FileBookProviderTest {
             .releasedYear(Year.parse("1960"))
             .build();
 
+    private static final Book BOOK3 = Book.builder()
+            .title("The Great Gatsby2")
+            .isbn("9780743243465")
+            .author(new Author("F. Scott", "Fitzgerald"))
+            .releasedYear(Year.parse("1935"))
+            .build();
 
-    private static final List<Book> EXPECTED_BOOKS = List.of(BOOK1, BOOK2);
+
+    private static final List<Book> EXPECTED_BOOKS = List.of(BOOK1, BOOK2, BOOK3);
 
     @Test
     void shouldProvideAndMapAllBooksFromFile() {
@@ -49,4 +67,17 @@ class FileBookProviderTest {
         //then
         Assertions.assertThat(result).containsAll(EXPECTED_BOOKS);
     }
+
+    @Test
+    void shouldProvideAndMapBooksByAuthorFromFile() {
+        //given
+        BookProvider bookProvider = new FileBookProvider("src/test/resources/test_books");
+        List<Book> expectedBooksByAuthor = List.of(BOOK1, BOOK3);
+        //when
+        List<Book> result = bookProvider.getBooksByAuthor(new Author("F. Scott", "Fitzgerald"));
+        //then
+        Assertions.assertThat(result).containsAll(expectedBooksByAuthor);
+    }
+
+
 }
